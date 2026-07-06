@@ -34,7 +34,7 @@ export async function POST(req: Request) {
 질문에 대한 보기는 반드시 4개(options 배열 길이 4)를 제공하여 선생님이 쉽게 선택할 수 있게 해주세요. (객관식 문답)`;
 
     const response = await ai.models.generateContent({
-      model: 'gemini-3.1-flash',
+      model: 'gemini-3.1-flash-lite',
       contents: history,
       config: {
         systemInstruction,
