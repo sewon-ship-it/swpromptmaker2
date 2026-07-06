@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Nunito:wght@400;600;700;800&display=swap');
+
+:root {
+  --primary: #ff8fa3;
+  --primary-hover: #ff748c;
+  --secondary: #a0c4ff;
+  --bg-start: #fdffb6;
+  --bg-end: #caffbf;
+  --text-dark: #3d405b;
+  --text-light: #ffffff;
+  --bubble-ai: #ffffff;
+  --bubble-border: #f4a261;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: 'Jua', 'Nunito', sans-serif; /* Jua is a cute Korean font */
+  background: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+  background-attachment: fixed;
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.app-wrapper {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  border: 4px solid white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 85vh;
+}
+
+.header {
+  padding: 20px 30px;
+  background: white;
+  border-bottom: 4px dashed var(--secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-container h1 {
+  color: var(--primary);
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.icon-bounce {
+  animation: bounce 2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.progress-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+.progress-text {
+  text-align: right;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 15px;
+  background: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid white;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--secondary), #bdb2ff);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content-area {
+  flex: 1;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  flex: 1;
+  gap: 30px;
+}
+
+.bubble {
+  background: var(--bubble-ai);
+  padding: 25px;
+  border-radius: 25px;
+  border: 4px solid var(--secondary);
+  box-shadow: 0 8px 0 var(--secondary);
+  position: relative;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 600px;
+}
+
+.bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 15px 15px 0;
+  border-style: solid;
+  border-color: var(--secondary) transparent transparent transparent;
+}
+
+.greeting-bubble h2 {
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+.input-group {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+textarea {
+  width: 100%;
+  padding: 20px;
+  border: 4px solid #ddd;
+  border-radius: 20px;
+  font-size: 18px;
+  font-family: 'Jua', 'Nunito', sans-serif;
+  resize: none;
+  outline: none;
+  transition: all 0.3s;
+}
+
+textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(255, 143, 163, 0.2);
+}
+
+.primary-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 20px;
+  font-family: inherit;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 6px 0 var(--primary-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.1s;
+}
+
+.primary-btn:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 var(--primary-hover);
+}
+
+.primary-btn:disabled {
+  background: #ccc;
+  box-shadow: 0 6px 0 #999;
+  cursor: not-allowed;
+}
+
+/* Chat Screen */
+.chat-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+}
+
+.question-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.ai-bubble {
+  border-color: var(--primary);
+  box-shadow: 0 8px 0 var(--primary);
+  margin-bottom: 20px;
+}
+.ai-bubble::after {
+  border-color: var(--primary) transparent transparent transparent;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  width: 100%;
+  max-width: 700px;
+}
+
+@media (max-width: 600px) {
+  .options-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.option-btn {
+  background: white;
+  border: 3px solid var(--secondary);
+  border-radius: 20px;
+  padding: 20px;
+  font-size: 18px;
+  font-family: inherit;
+  color: var(--text-dark);
+  cursor: pointer;
+  box-shadow: 0 6px 0 var(--secondary);
+  transition: all 0.1s;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.option-btn:hover {
+  background: #f8faff;
+}
+
+.option-btn:active {
+  transform: translateY(6px) !important;
+  box-shadow: 0 0 0 var(--secondary) !important;
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: var(--primary);
+  font-size: 18px;
+  margin: 40px 0;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.final-prompt-container {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.final-prompt-box {
+  background: white;
+  border: 4px solid #ffc6ff;
+  border-radius: 20px;
+  padding: 25px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.final-prompt-box pre {
+  font-family: inherit; /* using the cute font even for code! */
+  white-space: pre-wrap;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.copy-btn {
+  width: 100%;
+  background: #9bf6ff;
+  border: none;
+  padding: 15px;
+  font-size: 18px;
+  font-family: inherit;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #5bc0be;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #1a535c;
+  transition: all 0.1s;
+}
+
+.copy-btn:active {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 #5bc0be;
+}
+
+.secondary-btn {
+  background: transparent;
+  color: var(--text-dark);
+  border: 3px solid #ddd;
+  padding: 12px 20px;
+  font-size: 18px;
+  font-family: inherit;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.secondary-btn:hover {
+  background: #f5f5f5;
+}
+
+.mt-4 {
+  margin-top: 1rem;
+}
