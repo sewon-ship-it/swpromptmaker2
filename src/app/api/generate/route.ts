@@ -1,9 +1,10 @@
-import { GoogleGenAI } from '@google/genai';
 import { NextResponse } from 'next/server';
+import OpenAI from 'openai';
 
-// Initialize the Gemini AI client
-// Make sure GEMINI_API_KEY is set in your .env file
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+// Initialize the OpenAI client
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 export async function POST(req: Request) {
   try {
@@ -38,23 +39,32 @@ export async function POST(req: Request) {
 항상 한국어로 대답하고, 말투는 매우 귀엽고 친절하며 격려하는 톤("~해요", "~해볼까요?", "우와, 좋은 생각이에요!")을 유지하세요.
 질문에 대한 보기는 반드시 4개(options 배열 길이 4)를 제공하여 선생님이 쉽게 선택할 수 있게 해주세요. (객관식 문답)`;
 
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: history,
-      config: {
-        systemInstruction,
-        responseMimeType: 'application/json',
-      }
+    // Convert the history array (which usually comes in parts) into OpenAI's messages format
+    // Since history from Gemini was structured differently (e.g. { role: 'user', parts: [{ text: '...' }] }),
+    // we need to map it to OpenAI's { role: 'user' | 'assistant', content: '...' }.
+    const messages = [
+      { role: 'system', content: systemInstruction },
+      ...history.map((msg: any) => ({
+        role: msg.role === 'model' ? 'assistant' : 'user',
+        content: msg.parts ? msg.parts[0].text : msg.content || '',
+      }))
+    ];
+
+    const response = await openai.chat.completions.create({
+      model: 'gpt-4o-mini',
+      messages: messages as any,
+      response_format: { type: 'json_object' },
+      temperature: 0.7,
     });
 
-    const text = response.text;
+    const text = response.choices[0].message.content;
     if (!text) {
       throw new Error('No text generated');
     }
 
     return NextResponse.json(JSON.parse(text));
   } catch (error) {
-    console.error('Gemini API Error:', error);
+    console.error('OpenAI API Error:', error);
     return NextResponse.json({ error: 'Failed to generate response' }, { status: 500 });
   }
 }
