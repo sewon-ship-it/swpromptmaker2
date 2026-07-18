@@ -4,9 +4,6 @@ import { ArrowLeft } from 'lucide-react';
 export default function TermsPage() {
   return (
     <div style={{ maxWidth: '800px', margin: '0 auto', padding: '3rem 2rem', lineHeight: '1.8', color: '#333' }}>
-      <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', color: '#666', marginBottom: '1rem', padding: '0.5rem 1rem', background: '#f5f5f5', borderRadius: '10px' }}>
-        <ArrowLeft size={16} /> 홈으로 돌아가기
-      </Link>
       <h1 style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '2rem' }}>이용약관</h1>
       <p style={{ marginBottom: '2rem' }}>본 이용약관(이하 '약관')은 본 서비스가 제공하는 교육용 웹 애플리케이션 서비스의 이용에 관한 사항을 규정합니다.</p>
       
@@ -58,6 +55,12 @@ export default function TermsPage() {
       
       <h3 style={{ marginTop: '2rem', marginBottom: '0.5rem', fontSize: '1.2rem', paddingTop: '1rem', borderTop: '1px solid #ddd' }}>부칙</h3>
       <p>이 약관은 2026년 7월부터 시행됩니다.</p>
+      
+      <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+        <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', color: '#333', padding: '1rem 2rem', background: '#e0e0e0', borderRadius: '15px', fontWeight: 'bold' }}>
+          <ArrowLeft size={18} /> 홈으로 돌아가기
+        </Link>
+      </div>
     </div>
   );
 }
