@@ -1,8 +1,14 @@
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
+
 export default function PrivacyPage() {
   return (
     <div style={{ maxWidth: '800px', margin: '0 auto', padding: '3rem 2rem', lineHeight: '1.8', color: '#333' }}>
+      <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', color: '#666', marginBottom: '1rem', padding: '0.5rem 1rem', background: '#f5f5f5', borderRadius: '10px' }}>
+        <ArrowLeft size={16} /> 홈으로 돌아가기
+      </Link>
       <h1 style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '2rem' }}>개인정보 처리방침</h1>
-      <p style={{ marginBottom: '2rem' }}>앱뜰(App-Tteul)(이하 '본 서비스')은(는) 서비스 이용자(선생님 등)의 개인정보를 중요시하며, 관련 법령을 준수하고 있습니다.</p>
+      <p style={{ marginBottom: '2rem' }}>본 서비스는 서비스 이용자(선생님 등)의 개인정보를 중요시하며, 관련 법령을 준수하고 있습니다.</p>
       
       <h3 style={{ marginTop: '1.5rem', marginBottom: '0.5rem', fontSize: '1.2rem' }}>1. 개인정보 수집 항목 및 목적</h3>
       <p>본 서비스는 회원가입 절차가 없으며, 원활한 서비스(프롬프트 생성 기능 등) 제공을 위해 이용자의 <strong>이름, 이메일, 연락처 등 어떠한 개인정보도 수집하지 않습니다.</strong></p>
