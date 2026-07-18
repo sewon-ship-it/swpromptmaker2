@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <body style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         {children}
         <Footer />
       </body>

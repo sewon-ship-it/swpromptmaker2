@@ -14,6 +14,7 @@ export default function Footer() {
       fontSize: '0.875rem',
       color: '#666',
       backgroundColor: '#f9f9f9',
+      width: '100%',
     }}>
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
         <Link href="/privacy" style={{ fontWeight: 'bold', color: '#444', textDecoration: 'none' }}>개인정보 처리방침</Link>
